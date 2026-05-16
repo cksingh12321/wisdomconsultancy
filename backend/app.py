@@ -20,7 +20,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr, Field
 
-APP_VERSION = "1.0.0"
+APP_VERSION = "1.0.1"
 
 # ----- Config -----
 TURSO_URL = os.environ.get("TURSO_DATABASE_URL", "").strip()
