@@ -1,0 +1,61 @@
+name: Deploy backend to HuggingFace Spaces
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/deploy-backend.yml'
+  workflow_dispatch: {}   # allow manual runs from the Actions tab
+
+concurrency:
+  group: hf-space-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      HF_USER:  cksingh12321
+      HF_SPACE: wisdom-backend
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Validate HF token
+        run: |
+          if [[ -z "${{ secrets.HF_TOKEN }}" ]]; then
+            echo "::error::HF_TOKEN secret is not set on this repository."
+            exit 1
+          fi
+
+      - name: Sync backend/ → HuggingFace Space
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          set -euo pipefail
+
+          # 1. Clone the Space repo (token in URL is scoped to this job)
+          git clone "https://user:${HF_TOKEN}@huggingface.co/spaces/${HF_USER}/${HF_SPACE}" hf-space
+
+          # 2. Mirror backend/ contents into the Space clone.
+          #    --delete keeps the Space in lockstep with backend/.
+          #    --exclude keeps the Space's git metadata + HF's .gitattributes file.
+          rsync -av --delete \
+            --exclude='.git' \
+            --exclude='.gitattributes' \
+            backend/ hf-space/
+
+          cd hf-space
+          git config user.email "actions@github.com"
+          git config user.name  "GitHub Actions"
+
+          if [[ -z "$(git status --porcelain)" ]]; then
+            echo "No changes to deploy."
+            exit 0
+          fi
+
+          git add -A
+          git commit -m "Auto-deploy from GitHub ${GITHUB_SHA::7}"
+          git push origin HEAD:main
