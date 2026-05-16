@@ -31,7 +31,17 @@ export default function Contact() {
               </li>
               <li>
                 <span className="contact-icon"><Icon name="pin" size={20} /></span>
-                <div><strong>Active Locations</strong><span>KASEZ Kandla · Mundra SEZ · Tuna Port</span></div>
+                <div>
+                  <strong>Delhi Office</strong>
+                  <span>157/9, Kishangarh, Vasant Kunj, New Delhi - 110070</span>
+                </div>
+              </li>
+              <li>
+                <span className="contact-icon"><Icon name="pin" size={20} /></span>
+                <div>
+                  <strong>Gujarat Office</strong>
+                  <span>Plot No. 48/8, Sector-1, Behind Modern School, Oslo Society, Gandhidham (Kachchh), Gujarat-370201</span>
+                </div>
               </li>
               <li>
                 <span className="contact-icon"><Icon name="clock" size={20} /></span>

@@ -40,7 +40,12 @@ export default function Footer() {
             <ul>
               <li><a href="tel:+918920954252">+91 8920 954252</a></li>
               <li><a href="mailto:info@wisdomconsultancy.org">info@wisdomconsultancy.org</a></li>
-              <li><Link href="/contact">Schedule a Call</Link></li>
+              <li style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, lineHeight: 1.5 }}>
+                Delhi: 157/9, Kishangarh, Vasant Kunj, New Delhi - 110070
+              </li>
+              <li style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, lineHeight: 1.5 }}>
+                Gujarat: Plot No. 48/8, Sector-1, Oslo Society, Gandhidham (Kachchh) - 370201
+              </li>
             </ul>
           </div>
         </div>
