@@ -45,6 +45,25 @@ a { color: inherit; }
   padding: 18px 0;
 }
 .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--navy); }
+.logo-img {
+  height: 64px;
+  width: auto;
+  display: block;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+.logo:hover .logo-img { transform: translateY(-1px) scale(1.02); }
+.logo-img--footer {
+  height: 84px;
+  background: rgba(255,255,255,0.96);
+  padding: 8px 14px;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+}
+@media (max-width: 640px) {
+  .logo-img { height: 52px; }
+  .logo-img--footer { height: 72px; }
+}
+/* Legacy fallback (kept in case any other page uses these) */
 .logo-mark {
   width: 42px; height: 42px;
   border-radius: 8px;

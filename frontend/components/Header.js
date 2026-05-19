@@ -17,12 +17,8 @@ export default function Header() {
   return (
     <header className="site-header">
       <div className="container nav">
-        <Link href="/" className="logo" onClick={() => setOpen(false)}>
-          <div className="logo-mark">W</div>
-          <div className="logo-text">
-            <strong>Wisdom</strong>
-            <span>Business &amp; Legal Consultancy</span>
-          </div>
+        <Link href="/" className="logo" onClick={() => setOpen(false)} aria-label="Wisdom Business & Legal Consultancy — Home">
+          <img src="/logo.png" alt="Wisdom Business & Legal Consultancy" className="logo-img" />
         </Link>
         <nav>
           <ul className={`nav-links ${open ? 'open' : ''}`}>

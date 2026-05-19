@@ -7,12 +7,8 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <Link href="/" className="logo" style={{ color: 'var(--white)' }}>
-              <div className="logo-mark" style={{ background: 'rgba(255,255,255,0.08)' }}>W</div>
-              <div className="logo-text">
-                <strong style={{ color: 'var(--white)' }}>Wisdom</strong>
-                <span style={{ color: 'rgba(255,255,255,0.6)' }}>Business &amp; Legal Consultancy</span>
-              </div>
+            <Link href="/" className="logo" aria-label="Wisdom Business & Legal Consultancy — Home">
+              <img src="/logo.png" alt="Wisdom Business & Legal Consultancy" className="logo-img logo-img--footer" />
             </Link>
             <p>Trusted advisory on Customs, GST, DGFT, Income Tax, Maritime, Shipping, Corporate Law and Export-Import — with on-ground presence at India&apos;s leading SEZs and ports.</p>
           </div>
